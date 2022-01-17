@@ -1,0 +1,216 @@
+[
+    {
+        "id": "7959fbb75a298676",
+        "type": "tab",
+        "label": "共通节点test1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "50e5425f9ab8e858",
+        "type": "tab",
+        "label": "共通节点test2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b50b31a6ef113633",
+        "type": "inject",
+        "z": "7959fbb75a298676",
+        "name": "自定义输入节点",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "test",
+                "v": "这是test",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "这是topic",
+        "payloadType": "date",
+        "x": 200,
+        "y": 140,
+        "wires": [
+            [
+                "aa391f1c3532ce27"
+            ]
+        ],
+        "icon": "node-red/comment.svg",
+        "info": "这是个测试节点"
+    },
+    {
+        "id": "f9fdd734d08ca84b",
+        "type": "catch",
+        "z": "7959fbb75a298676",
+        "name": "捕获所有节点的处理错误",
+        "scope": null,
+        "uncaught": false,
+        "x": 210,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f6e7d071b5dec0e6",
+        "type": "status",
+        "z": "7959fbb75a298676",
+        "name": "",
+        "scope": [
+            "aa391f1c3532ce27"
+        ],
+        "x": 190,
+        "y": 220,
+        "wires": [
+            [
+                "2ea939b3d5fa7cae"
+            ]
+        ]
+    },
+    {
+        "id": "2ea939b3d5fa7cae",
+        "type": "debug",
+        "z": "7959fbb75a298676",
+        "name": "status输出节点",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "aa391f1c3532ce27",
+        "type": "http request",
+        "z": "7959fbb75a298676",
+        "name": "访问百度",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://baid2u.com",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 400,
+        "y": 140,
+        "wires": [
+            [
+                "4dda1ef5b5c46524"
+            ]
+        ]
+    },
+    {
+        "id": "4dda1ef5b5c46524",
+        "type": "link out",
+        "z": "7959fbb75a298676",
+        "name": "流出节点",
+        "mode": "link",
+        "links": [
+            "44ef14d657f4bb09",
+            "4e6a2f3cb7f92eeb"
+        ],
+        "x": 535,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "4e6a2f3cb7f92eeb",
+        "type": "link in",
+        "z": "7959fbb75a298676",
+        "name": "gggg",
+        "links": [
+            "4dda1ef5b5c46524"
+        ],
+        "x": 635,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "44ef14d657f4bb09",
+        "type": "link in",
+        "z": "50e5425f9ab8e858",
+        "name": "流入节点",
+        "links": [
+            "4dda1ef5b5c46524"
+        ],
+        "x": 215,
+        "y": 140,
+        "wires": [
+            [
+                "4a456ead71e2dc83"
+            ]
+        ]
+    },
+    {
+        "id": "4a456ead71e2dc83",
+        "type": "debug",
+        "z": "50e5425f9ab8e858",
+        "name": "流入调试节点",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "40dfe9250711d373",
+        "type": "complete",
+        "z": "50e5425f9ab8e858",
+        "name": "",
+        "scope": [
+            "4a456ead71e2dc83"
+        ],
+        "uncaught": false,
+        "x": 250,
+        "y": 260,
+        "wires": [
+            [
+                "6174363a2f25d911"
+            ]
+        ]
+    },
+    {
+        "id": "6174363a2f25d911",
+        "type": "debug",
+        "z": "50e5425f9ab8e858",
+        "name": "complete输出节点",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 260,
+        "wires": []
+    }
+]
