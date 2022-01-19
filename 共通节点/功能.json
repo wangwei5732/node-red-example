@@ -1,0 +1,219 @@
+[
+  {
+    "id": "5956a75cca6ac21d",
+    "type": "tab",
+    "label": "功能",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "bdf8497366d4e1c4",
+    "type": "function",
+    "z": "5956a75cca6ac21d",
+    "name": "两个返回值测试",
+    "func": "\nnode.log(\"打印日志\")\nreturn [msg,msg];",
+    "outputs": 2,
+    "noerr": 0,
+    "initialize": "// 部署节点后，此处添加的代码将运行一次。 \nnode.log(\"初始化\")",
+    "finalize": "// 节点正在停止或重新部署时，将运行此处添加的代码。 \nnode.log(\"end\")",
+    "libs": [],
+    "x": 260,
+    "y": 120,
+    "wires": [
+      [
+        "8f72ddf511443674"
+      ],
+      [
+        "3ef6c411784b6808"
+      ]
+    ]
+  },
+  {
+    "id": "e442ddb7b39ff3bb",
+    "type": "inject",
+    "z": "5956a75cca6ac21d",
+    "name": "开始",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "121",
+    "payloadType": "num",
+    "x": 90,
+    "y": 480,
+    "wires": [
+      [
+        "52bdc137802202c4"
+      ]
+    ]
+  },
+  {
+    "id": "3ef6c411784b6808",
+    "type": "debug",
+    "z": "5956a75cca6ac21d",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 560,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "064ed3a1046a56a4",
+    "type": "switch",
+    "z": "5956a75cca6ac21d",
+    "name": "规则：小于50；大于等于50",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "lt",
+        "v": "50",
+        "vt": "str"
+      },
+      {
+        "t": "gte",
+        "v": "50",
+        "vt": "str"
+      }
+    ],
+    "checkall": "false",
+    "repair": false,
+    "outputs": 2,
+    "x": 200,
+    "y": 260,
+    "wires": [
+      [
+        "bdf8497366d4e1c4"
+      ],
+      [
+        "6a13cc6f1b97435e"
+      ]
+    ]
+  },
+  {
+    "id": "8948866b9911e5eb",
+    "type": "debug",
+    "z": "5956a75cca6ac21d",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 530,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "6a13cc6f1b97435e",
+    "type": "change",
+    "z": "5956a75cca6ac21d",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "大于等于10",
+        "tot": "str"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 420,
+    "y": 400,
+    "wires": [
+      [
+        "8948866b9911e5eb"
+      ]
+    ]
+  },
+  {
+    "id": "8f72ddf511443674",
+    "type": "template",
+    "z": "5956a75cca6ac21d",
+    "name": "",
+    "field": "msg",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "This is the payload: {{msg}} !",
+    "output": "str",
+    "x": 480,
+    "y": 80,
+    "wires": [
+      [
+        "3ef6c411784b6808"
+      ]
+    ]
+  },
+  {
+    "id": "fe63dc39a096be2b",
+    "type": "range",
+    "z": "5956a75cca6ac21d",
+    "minin": "0",
+    "maxin": "10",
+    "minout": "0",
+    "maxout": "100",
+    "action": "roll",
+    "round": false,
+    "property": "payload",
+    "name": "0-10映射到0-100",
+    "x": 130,
+    "y": 360,
+    "wires": [
+      [
+        "064ed3a1046a56a4"
+      ]
+    ]
+  },
+  {
+    "id": "52bdc137802202c4",
+    "type": "delay",
+    "z": "5956a75cca6ac21d",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "5",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 150,
+    "y": 440,
+    "wires": [
+      [
+        "fe63dc39a096be2b"
+      ]
+    ]
+  }
+]
