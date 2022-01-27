@@ -1,0 +1,57 @@
+[
+    {
+        "id": "31b7f3dbe0acc949",
+        "type": "tab",
+        "label": "流程 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0a5bcb13afc758c9",
+        "type": "http in",
+        "z": "31b7f3dbe0acc949",
+        "name": "getTest",
+        "url": "/getTest",
+        "method": "get",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 200,
+        "wires": [
+            [
+                "27ab446d357ef8f3"
+            ]
+        ]
+    },
+    {
+        "id": "0168e8b62e961504",
+        "type": "http response",
+        "z": "31b7f3dbe0acc949",
+        "name": "response",
+        "statusCode": "",
+        "headers": {},
+        "x": 420,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "27ab446d357ef8f3",
+        "type": "template",
+        "z": "31b7f3dbe0acc949",
+        "name": "转换",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "receive message: {{payload.message}} !",
+        "output": "str",
+        "x": 280,
+        "y": 320,
+        "wires": [
+            [
+                "0168e8b62e961504"
+            ]
+        ]
+    }
+]

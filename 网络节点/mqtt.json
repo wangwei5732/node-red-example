@@ -1,0 +1,42 @@
+[
+    {
+        "id": "31b7f3dbe0acc949",
+        "type": "tab",
+        "label": "流程 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "73dd018da9aada6b",
+        "type": "websocket in",
+        "z": "31b7f3dbe0acc949",
+        "name": "",
+        "server": "4bf880fa14600802",
+        "client": "",
+        "x": 130,
+        "y": 280,
+        "wires": [
+            [
+                "4fcbf2a845ee7e9a"
+            ]
+        ]
+    },
+    {
+        "id": "4fcbf2a845ee7e9a",
+        "type": "websocket out",
+        "z": "31b7f3dbe0acc949",
+        "name": "",
+        "server": "4bf880fa14600802",
+        "client": "",
+        "x": 410,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "4bf880fa14600802",
+        "type": "websocket-listener",
+        "path": "/ws/wstest",
+        "wholemsg": "false"
+    }
+]
